@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Amazing Amy’s Barbershop</title>
+
+<style type="text/css">
+h1{ font-size: 35px; color:red; background-color:green; text-align: center; padding: 20px; }
+
+h3{ font-size: 25px; color:red; background-color:green; text-align: center; padding: 20px; }
+
+p{ font-size: 18px; line-height: 1.5 text-indent: 2em; }
+
+input{ font-size: 14px; line-height: 1.5 text-indent: 2em; }
+</style>
+
+</head>
+
+<body>
+    <h1>Amazing Amy’s Barbershop</h1>
+    <h2>A Fresh Cut For You And Your Family!</h2>
+
+    <!-- Item 1 -->
+    <hr>
+    <p>Max -- Jack hairdresser: 10000 RMB</p>
+    <img src="https://tse3-mm.cn.bing.net/th?id=OIP.mjjW9l_KOr9lAfuyBDskPwHaJ4&pid=Api>
+
+    <!-- Item 2 -->
+    <p>Young -- Hairdresser director: 100022318 RMB</p>
+    <img src="https://hips.hearstapps.com/mac.h-cdn.co/assets/16/29/1468961519-mc-pin-30best-shorthairstyles.jpg">
+
+    <!-- Item 3 --> 
+    <p>Max -- The apprentice hairdresser: 123431348 RMB</p>
+    <img src="http://newfashionelle.com/wp-content/uploads/2015/07/Eid-Hairstyle-Girls-0462.jpg">
+
+    <!-- User Form -->
+    <h3>Appointment</h3>
+    <form action="{% url 'haircut:home_page' %} " method="POST">
+        {% csrf_token %}
+        <input type="text" name="user" placeholder="Type Your Name"><br>
+        <input placeholder="The Name Of Barber" name="barber"><br>
+        <input type="text" name="time" placeholder="The Time Of You Arrival"><br>
+        <input type="submit" value="Order Now!">
+    </form>
+    
+
+    <!-- Orders -->
+    <h3>Orders</h3>
+    {% for appointment in appointments %}
+        Name: {{appointment.user}}<br>
+        Barber: {{appointment.barber}}<br>
+        Time: {{appointment.time}}<br>
+        <hr>
+    {% endfor %}
+
+</body>
+</html>
